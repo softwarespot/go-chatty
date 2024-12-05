@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Chatterbox</title>
+
+        <style>
+            body {
+                align-items: center;
+                background-color: #121417;
+                box-sizing: border-box;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                font-family: system-ui, sans-serif;
+                margin: 0 auto;
+                max-width: 800px;
+                padding: 20px;
+            }
+
+            h1 {
+                color: #fff;
+                font-size: 36px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-align: center;
+                text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            }
+
+            .room-controls,
+            .msg-input-wrapper {
+                align-items: center;
+                display: flex;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .room-controls input,
+            .msg-input-wrapper textarea {
+                background-color: #1b1f23;
+                border-radius: 5px 0 0 5px;
+                border: none;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+                color: #ccd6f6;
+                font-size: 16px;
+                outline: none;
+                padding: 10px;
+                width: 200px;
+            }
+
+            .msg-input-wrapper textarea {
+                flex: 1;
+                min-width: 200px;
+                overflow-wrap: break-word;
+                resize: vertical;
+                width: calc(100% - 120px);
+                word-wrap: break-word;
+            }
+
+            .room-controls button,
+            .msg-input-wrapper button {
+                background-color: #2ecc71;
+                border-radius: 0 5px 5px 0;
+                border: none;
+                color: #fff;
+                cursor: pointer;
+                font-size: 16px;
+                padding: 10px 20px;
+                transition:
+                    background-color 0.3s ease,
+                    transform 0.2s ease;
+            }
+
+            .room-controls button:disabled,
+            .msg-input-wrapper button:disabled {
+                background-color: #33383b;
+                cursor: not-allowed;
+            }
+
+            .room-controls button:not(:disabled):hover,
+            .msg-input-wrapper button:not(:disabled):hover {
+                background-color: #34c759;
+                transform: scale(1.05);
+            }
+
+            #msgs-log {
+                background-color: #1b1f23;
+                border-radius: 10px;
+                border: 1px solid #33383b;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+                color: #ccd6f6;
+                height: 500px;
+                margin-bottom: 10px;
+                overflow-wrap: break-word;
+                overflow-y: scroll;
+                padding: 15px;
+                white-space: pre-wrap;
+                width: 400px;
+                word-wrap: break-word;
+            }
+
+            .msg-input-wrapper {
+                width: 400px;
+            }
+
+            @media (max-width: 768px) {
+                #msgs-log,
+                .msg-input-wrapper {
+                    width: 100%;
+                }
+                #msgs-log {
+                    height: 300px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                #msgs-log {
+                    height: 200px;
+                }
+                .msg-input-wrapper textarea {
+                    padding: 5px;
+                }
+                .msg-input-wrapper button {
+                    padding: 5px 10px;
+                }
+            }
+
+            .system {
+                color: #666970;
+                font-size: 14px;
+            }
+
+            .sender {
+                color: #56b3fa;
+                font-size: 16px;
+            }
+
+            .receiver {
+                color: #99a2ad;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Chatterbox</h1>
+
+        <div class="room-controls">
+            <input id="room-name" type="text" placeholder="Enter a room name" />
+            <button id="join-btn">Join</button>
+            <button id="leave-btn">Leave</button>
+        </div>
+
+        <div id="msgs-log"></div>
+
+        <div class="msg-input-wrapper">
+            <textarea id="msg-input" placeholder="Write a message"></textarea>
+            <button id="msg-btn">&gt;</button>
+        </div>
+
+        <script type="module" src="app.js"></script>
+    </body>
+</html>
